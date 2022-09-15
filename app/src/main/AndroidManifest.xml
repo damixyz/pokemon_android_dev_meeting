@@ -4,6 +4,7 @@
     package="com.damixyz.pokemon_android_dev_meeting">
 
     <application
+        android:name=".PokemonApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
