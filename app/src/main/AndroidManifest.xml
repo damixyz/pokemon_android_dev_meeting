@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Pokemon_android_dev_meeting"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".pokemons.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Pokemon_android_dev_meeting">
