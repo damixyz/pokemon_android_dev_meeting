@@ -1,4 +1,4 @@
-package com.damixyz.pokemon_android_dev_meeting
+package com.damixyz.pokemon_android_dev_meeting.pokemons.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
