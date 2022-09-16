@@ -15,7 +15,9 @@ import androidx.navigation.compose.rememberNavController
 import com.damixyz.pokemon_android_dev_meeting.pokemons.presentation.details.PokemonDetailsScreen
 import com.damixyz.pokemon_android_dev_meeting.pokemons.presentation.list.PokemonListScreen
 import com.damixyz.pokemon_android_dev_meeting.ui.theme.Pokemon_android_dev_meetingTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
