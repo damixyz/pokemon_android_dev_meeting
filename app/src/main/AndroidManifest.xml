@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.damixyz.pokemon_android_dev_meeting">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".PokemonApplication"
         android:allowBackup="true"

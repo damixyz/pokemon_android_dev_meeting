@@ -8,12 +8,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.damixyz.pokemon_android_dev_meeting.pokemons.presentation.details.PokemonDetailsScreen
 import com.damixyz.pokemon_android_dev_meeting.pokemons.presentation.list.PokemonListScreen
+import com.damixyz.pokemon_android_dev_meeting.pokemons.presentation.list.PokemonViewModel
 import com.damixyz.pokemon_android_dev_meeting.ui.theme.Pokemon_android_dev_meetingTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,20 +40,14 @@ class MainActivity : ComponentActivity() {
 private fun PokemonApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = PokemonScreen.route_pokemon_list) {
-        PokemonScreen.screens.forEach { screen ->
-            composable(screen.route) {
-                MapRoutesToScreen(screen = screen, navController = navController)
+        composable(route = PokemonScreen.route_pokemon_list) {
+            val viewModel: PokemonViewModel = hiltViewModel()
+            PokemonListScreen(viewModel.state.value) {
+                navController.navigate(PokemonScreen.route_pokemon_details)
             }
         }
-    }
-}
-
-@Composable
-private fun MapRoutesToScreen(screen: PokemonScreen, navController: NavController) {
-    when (screen) {
-        PokemonScreen.PokemonList -> PokemonListScreen {
-            navController.navigate(PokemonScreen.route_pokemon_details)
+        composable(route = PokemonScreen.route_pokemon_details) {
+            PokemonDetailsScreen()
         }
-        PokemonScreen.PokemonDetails -> PokemonDetailsScreen()
     }
 }
