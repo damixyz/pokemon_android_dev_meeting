@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface PokemonApi {
     @GET(BuildConfig.END_POINT)
-    suspend fun getPokemon():List<Pokemon>
+    suspend fun getPokemon():PokemonData
 
     @GET("${BuildConfig.END_POINT}{id}")
     suspend fun getPokemonDetails(@Path("id") id: Int): Pokemon
