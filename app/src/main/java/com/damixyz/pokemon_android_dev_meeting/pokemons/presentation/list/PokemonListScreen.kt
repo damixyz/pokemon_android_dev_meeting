@@ -26,7 +26,9 @@ fun PokemonListScreen(screenState: ScreenState, onLaunchDetailsScreen: () -> Uni
         modifier = Modifier.fillMaxSize()
     ) {
         when (screenState) {
-            ScreenState.Empty -> TODO()
+            is ScreenState.Empty -> {
+                screenState.emptyMessage?.let { ProcessError(errorMessage = it) }
+            }
             is ScreenState.Error -> ProcessError(errorMessage = screenState.errorMessages)
             is ScreenState.Loading -> ProcessLoading()
             is PokemonScreenState.Content -> processContain(
@@ -60,5 +62,5 @@ private fun processContain(payload: List<Pokemon>, onLaunchDetailsScreen: () -> 
 
 @Composable
 private fun PokemonItem(item: Pokemon) {
-        Text(text = item.name)
+    Text(text = item.name)
 }

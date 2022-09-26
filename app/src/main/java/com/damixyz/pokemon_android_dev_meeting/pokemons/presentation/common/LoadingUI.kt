@@ -8,7 +8,8 @@ import androidx.compose.ui.semantics.semantics
 
 @Composable
 fun ProcessLoading() {
-    CircularProgressIndicator(Modifier.semantics {
-        this.contentDescription = "Circular loading icon"
-    })
+    CircularProgressIndicator(
+        modifier = Modifier.semantics {
+            this.contentDescription = "Circular loading icon"
+        })
 }

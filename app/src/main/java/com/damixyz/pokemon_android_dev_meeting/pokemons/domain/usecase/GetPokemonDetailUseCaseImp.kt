@@ -9,8 +9,9 @@ class GetPokemonDetailUseCaseImp @Inject constructor(private val repository: Pok
     GetPokemonDetailUseCase {
     override suspend fun execute(pokemonId: Int): ScreenState {
         return try {
-            val pokemonDetail = repository.getPokemonDetails(pokemonId = pokemonId)
-            PokemonDetailsScreenState.Content(payload = pokemonDetail)
+//            val pokemonDetail = repository.getPokemonDetails(pokemonId = pokemonId)
+//            PokemonDetailsScreenState.Content(payload = pokemonDetail)
+            ScreenState.Empty(emptyMessage = null)
 
         } catch (cause: Throwable) {
             ScreenState.Error(errorMessages = cause.message ?: "Unknown Error")

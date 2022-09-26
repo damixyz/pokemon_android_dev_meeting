@@ -5,7 +5,7 @@ import com.damixyz.pokemon_android_dev_meeting.pokemons.domain.model.Pokemon
 sealed class ScreenState {
     data class Loading(val isLoading: Boolean) : ScreenState()
     data class Error(val errorMessages: String) : ScreenState()
-    object Empty : ScreenState()
+    data class Empty(val emptyMessage: String?) : ScreenState()
 }
 
 sealed class PokemonScreenState : ScreenState() {

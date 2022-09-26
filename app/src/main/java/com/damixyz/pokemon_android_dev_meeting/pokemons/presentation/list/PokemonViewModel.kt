@@ -10,6 +10,7 @@ import com.damixyz.pokemon_android_dev_meeting.pokemons.domain.usecase.GetPokemo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Thread.sleep
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,7 +19,7 @@ class PokemonViewModel @Inject constructor(
     private val getPokemonDetailUseCase: GetPokemonDetailUseCase
 ) : ViewModel() {
     private val _state = mutableStateOf<ScreenState>(
-        ScreenState.Loading(isLoading = true)
+        ScreenState.Loading(isLoading = false)
     )
     val state: State<ScreenState>
         get() = _state
@@ -31,8 +32,8 @@ class PokemonViewModel @Inject constructor(
         viewModelScope.launch {
             val detailUseCase = getPokemonDetailUseCase.execute(1)
             Timber.d("✅ $detailUseCase")
-            val list = getPokemonsUseCase.execute()
-            _state.value = list
+            val screenState = getPokemonsUseCase.execute()
+            _state.value = screenState
         }
     }
 
